@@ -15,23 +15,34 @@ export default function LoginPage() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const handleLogin = () => {
-    supabase.auth.signInWithPassword({
-      email: email,
-      password: password
-    }).then(({ data, error }) => {
-      supabase
-        .from('user')
-        .select('*')
-        .eq('id', data.user?.id)
-        .eq('role', 'admin')
-        .then(({ data, error }) => {
-          if (data && data.length > 0) {
-            router.push(routes.admin.dashboard);
-          }
-        })
-    })
-      .catch(err => toast.error('Email Or Password is incorrect!'));
+  const handleLogin = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+      })
+
+      if (error) {
+        toast.error('Email Or Password is incorrect!');
+        throw error;
+      }
+
+      if (data) {
+        supabase
+          .from('user')
+          .select('*')
+          .eq('id', data.user.id)
+          .eq('role', 'admin')
+          .then(({ data, error }) => {
+            if (data && data.length > 0) {
+              router.push(routes.admin.dashboard);
+            }
+          })
+      }
+
+    } catch (error) {
+      console.error(error)
+    }
   }
   return (
     <div className="flex justify-center h-screen">
