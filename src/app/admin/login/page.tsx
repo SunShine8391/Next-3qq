@@ -22,7 +22,7 @@ export default function LoginPage() {
               <Input type="password" id="password" placeholder="Password" />
             </div>
           </div>
-          <Button className="w-full" onClick={() => { router.push(routes.home.dashboard) }}>Login</Button>
+          <Button className="w-full" onClick={() => { router.push(routes.admin.dashboard) }}>Login</Button>
           <div className="font-medium text-base cursor-pointer">Forgot your password?</div>
         </div>
       </div>

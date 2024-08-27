@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push(routes.home.login);
+      router.push(routes.user.passcode);
     }, 1500);
   }, []);
 

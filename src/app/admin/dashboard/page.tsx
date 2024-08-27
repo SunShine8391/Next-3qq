@@ -17,7 +17,7 @@ export default function DashboardPage() {
           <div className="font-bold text-3xl cursor-pointer">Logo Database</div>
           <div className="font-bold text-3xl cursor-pointer">Settings</div>
           <div className="bottom-0 fixed w-[375px] pb-5 px-5">
-            <Button className="w-full" onClick={() => { router.push(routes.home.login) }}>Sign Out</Button>
+            <Button className="w-full" onClick={() => { router.push(routes.admin.login) }}>Sign Out</Button>
           </div>
         </div>
       </div>
