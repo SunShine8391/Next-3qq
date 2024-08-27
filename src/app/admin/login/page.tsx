@@ -23,7 +23,7 @@ export default function LoginPage() {
       supabase
         .from('user')
         .select('*')
-        .eq('id', data.user.id)
+        .eq('id', data.user?.id)
         .eq('role', 'admin')
         .then(({ data, error }) => {
           if (data && data.length > 0) {
