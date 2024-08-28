@@ -28,7 +28,7 @@ export default function LoginPage() {
       }
 
       if (data) {
-        supabase
+        await supabase
           .from('user')
           .select('*')
           .eq('id', data.user.id)
