@@ -12,7 +12,7 @@ export default function DashboardPage() {
       <div className="w-[375px] h-full bg-gray-100">
         <div className="flex flex-col p-5 justify-center h-full items-center gap-2">
           <div className="font-bold text-3xl cursor-pointer">Home</div>
-          <div className="font-bold text-3xl cursor-pointer">User Database</div>
+          <div className="font-bold text-3xl cursor-pointer" onClick={() => router.push(routes.admin.usermanage)}>User Database</div>
           <div className="font-bold text-3xl cursor-pointer">Url Database</div>
           <div className="font-bold text-3xl cursor-pointer">Passcode Database</div>
           <div className="font-bold text-3xl cursor-pointer">Logo Database</div>

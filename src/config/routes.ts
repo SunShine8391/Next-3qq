@@ -9,6 +9,7 @@ const routes = {
   admin: {
     login: "/admin/login" as Route<string>,
     dashboard: "/admin/dashboard" as Route<string>,
+    usermanage: "/admin/usermanage" as Route<string>,
   },
 };
 
