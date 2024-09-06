@@ -11,7 +11,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useEffect, useMemo, useState } from "react";
-import { HiOutlineTrash } from "react-icons/hi";
 
 export default function UserManagePage() {
   const router = useRouter();
@@ -30,19 +29,12 @@ export default function UserManagePage() {
     fetchData();
   }, []);
 
-  // const actionColumn = (data: any) => {
-  //   <div>
-  //     <HiOutlineTrash />
-  //   </div>
-  // }
-
   const tableData = useMemo(
     () =>
       userList &&
       userList.map((item: any, index: any) => ({
         ...item,
         listId: index + 1,
-        // action: actionColumn(item)
       })),
     [userList]
   )
@@ -97,29 +89,28 @@ export default function UserManagePage() {
     <div className="flex justify-center h-screen">
       <div className="w-[375px] h-full bg-gray-100">
         <div className="flex flex-col p-5 h-full gap-2">
-          <div className="font-extrabold text-2xl">User Manage</div>
+          <div className="flex flex-row justify-between">
+            <div className="font-extrabold text-2xl">User Manage</div>
+            <div className="cursor-pointer font-bold text-lg" onClick={() => router.back()}>Back</div>
+          </div>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">ID</TableHead>
-                <TableHead>Username</TableHead>
+                <TableHead>First Name</TableHead>
+                <TableHead>Last Name</TableHead>
                 <TableHead>Email</TableHead>
                 <TableHead>Phone</TableHead>
-                {/* <TableHead className="text-right">Action</TableHead> */}
               </TableRow>
             </TableHeader>
             <TableBody>
               {tableData.map((item: any, index: any) => (
                 <TableRow key={index}>
                   <TableCell className="font-medium">{item.listId}</TableCell>
-                  <TableCell>{item.username}</TableCell>
+                  <TableCell>{item.username.split(' ')[0]}</TableCell>
+                  <TableCell>{item.username.split(' ')[1]}</TableCell>
                   <TableCell>{item.email}</TableCell>
                   <TableCell className="text-right">{item.phone}</TableCell>
-                  {/* <TableCell className="text-right">
-                    <HiOutlineTrash size={20} color="red" onClick={async () => {
-                      await supabase.from('user').delete().eq("id", item.id)
-                    }} />
-                  </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>
